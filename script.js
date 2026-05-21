@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             burgerToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
             
+            // Bloquear scroll del cuerpo cuando el menú esté abierto
             if (navMenu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Cerrar menú al hacer clic en cualquier enlace
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 burgerToggle.classList.remove('active');
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // ========== CURSOR MAGNÉTICO (Desktop) ==========
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 992) {
         const cursor = document.getElementById('custom-cursor');
         const blurCursor = document.getElementById('custom-cursor-blur');
         
@@ -36,6 +38,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 cursor.style.left = e.clientX + 'px';
                 cursor.style.top = e.clientY + 'px';
                 blurCursor.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
+            });
+            
+            const interactiveElements = document.querySelectorAll('.product-btn, .cta-primary, .nav-link, .burger-menu');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.width = '20px';
+                    cursor.style.height = '20px';
+                    cursor.style.backgroundColor = 'transparent';
+                    cursor.style.border = '1px solid var(--primary)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.width = '8px';
+                    cursor.style.height = '8px';
+                    cursor.style.backgroundColor = 'var(--primary)';
+                    cursor.style.border = 'none';
+                });
             });
         }
     }
@@ -46,9 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let timerInterval = null;
     let timerSeconds = 10; 
-    let timerState = 'PREPARACIÓN';
+    let timerState = 'PREPARACIÓN'; // Estados: PREPARACIÓN -> LUCHA -> PAUSA
     let isTimerRunning = false;
 
+    // Sonido acústico nativo (campana tatami)
     function playBuzzer(frequency, duration) {
         try {
             const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -56,12 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const gainNode = audioCtx.createGain();
             oscillator.type = 'sine';
             oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-            gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
             oscillator.connect(gainNode);
             gainNode.connect(audioCtx.destination);
             oscillator.start();
             oscillator.stop(audioCtx.currentTime + duration);
-        } catch (e) { console.log("Audio block."); }
+        } catch (e) { console.log("Audio contexts blocked."); }
     }
 
     function formatTime(totalSeconds) {
@@ -76,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (display && label) {
             display.textContent = formatTime(timerSeconds);
             label.textContent = timerState;
+            // Control cromático por estados
             if (timerState === 'PREPARACIÓN') { label.style.color = '#FFB300'; display.style.color = '#FFF'; }
             else if (timerState === 'LUCHA') { label.style.color = '#00E5FF'; display.style.color = '#00E5FF'; }
         }
@@ -92,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (timerState === 'PREPARACIÓN') {
                     playBuzzer(600, 0.8);
                     timerState = 'LUCHA';
-                    timerSeconds = 300;
+                    timerSeconds = 300; // Round 5min
                     updateUI();
                 } else {
                     clearInterval(timerInterval);
@@ -109,15 +129,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('timerPlayBtn')?.addEventListener('click', startTimer);
         document.getElementById('timerPauseBtn')?.addEventListener('click', pauseTimer);
         document.getElementById('timerResetBtn')?.addEventListener('click', resetTimer);
-        resetTimer();
+        resetTimer(); // Set inicial
     }
 
-    function loadContent(id) {
-        const body = modal.querySelector('.modal-body');
-        const title = modal.querySelector('.modal-header h2');
-        if (id === 'bjj') {
-            title.innerHTML = 'Simulador: <span>BJJ Timer Pro</span>';
-            body.innerHTML = `
+    function loadContent(productId) {
+        const modalBody = modal.querySelector('.modal-body');
+        const modalTitle = modal.querySelector('.modal-header h2');
+
+        if (productId === 'bjj') {
+            modalTitle.innerHTML = 'Simulador Web: <span>BJJ Timer Pro</span>';
+            modalBody.innerHTML = `
                 <div class="demo-mockup-modal">
                     <div class="mockup-header-modal"><span>JLDYNAMICS</span><span>TATAMI DIGITAL</span></div>
                     <div class="mockup-timer-modal">
@@ -129,11 +150,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             <button id="timerResetBtn" class="modal-timer-btn">⟳</button>
                         </div>
                     </div>
-                </div>`;
+                </div>
+                <div class="modal-info-text">
+                    <p>💡 <strong>Esencia:</strong> Esta es una versión web simplificada del núcleo. En producción con Flutter, el administrador cambia logos Hex y activa el emparejamiento <strong>Modo Gladiadores</strong> vía QR.</p>
+                </div>
+            `;
             attachListeners();
         } else {
-            title.innerHTML = id === 'fintech' ? 'Paga tus Deudas' : 'Tutor al Mando';
-            body.innerHTML = `<p style="color:var(--text-muted); font-size:0.9rem; text-align:center;">Infraestructura lógica integrada en base de datos segura y Flutter. Dirección de consulta activa.</p>`;
+            modalTitle.textContent = productId === 'fintech' ? 'Paga tus Deudas' : 'Tutor al Mando';
+            modalBody.innerHTML = `<p style="color:var(--text-muted); font-size:0.9rem; text-align:center;">Infraestructura lógica integrada en base de datos segura y Flutter. Dirección de consulta activa.</p>`;
         }
     }
 
@@ -146,4 +171,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     modalCloseBtn?.addEventListener('click', () => { modal.classList.remove('active'); document.body.style.overflow = ''; pauseTimer(); });
+    modal.addEventListener('click', (e) => { if (e.target === modal) { modal.classList.remove('active'); document.body.style.overflow = ''; pauseTimer(); } });
 });
