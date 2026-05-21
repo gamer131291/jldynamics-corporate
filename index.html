@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JLDynamics | Software & Physical Security</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
-<body>
+<body data-interactive>
 
     <div id="custom-cursor"></div>
     <div id="custom-cursor-blur"></div>
@@ -28,7 +29,7 @@
                 <ul class="nav-list">
                     <li><a href="#inicio" class="nav-link">Inicio</a></li>
                     <li class="dropdown">
-                        <a href="#servicios" class="nav-link">Servicios</a>
+                        <a href="#servicios" class="nav-link">Servicios ▾</a>
                         <ul class="submenu">
                             <li><a href="#desarrollo-movil">Desarrollo Móvil</a></li>
                             <li><a href="#automatizacion">Webs & Scripts</a></li>
@@ -36,53 +37,55 @@
                         </ul>
                     </li>
                     <li><a href="#productos" class="nav-link">Productos</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="#contacto" class="nav-link font-accent">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="inicio" class="hero-section">
-        <div class="hero-content">
-            <h1 class="main-title">INGENIERÍA E INNOVACIÓN EN SEGURIDAD</h1>
-            <p class="hero-subtitle">Sinergia avanzada entre desarrollo de software a medida y arquitecturas de protección física.</p>
-            <div class="hero-actions">
-                <a href="#productos" class="cta-primary">Explorar Ecosistema</a>
-                <a href="#servicios" class="cta-secondary">Nuestros Servicios</a>
+    <main>
+        <section id="inicio" class="hero-section">
+            <div class="hero-content">
+                <h1 class="main-title">INGENIERÍA E INNOVACIÓN EN SEGURIDAD</h1>
+                <p class="hero-subtitle">Sinergia avanzada entre desarrollo de software a medida y arquitecturas de protección física de alta confiabilidad.</p>
+                <div class="hero-actions">
+                    <a href="#productos" class="cta-primary">Explorar Ecosistema</a>
+                    <a href="#servicios" class="cta-secondary">Nuestros Servicios</a>
+                </div>
             </div>
-        </div>
-        <div class="pulse-divider"></div>
-    </section>
+            <div class="pulse-divider"></div>
+        </section>
 
-    <section id="productos" class="pillars-section">
-        <div class="section-header">
-            <h2>PRODUCTOS DE INVERSIÓN CORPORATIVA</h2>
-            <p>Soluciones propietarias diseñadas para resolver demandas de alta especificidad.</p>
-        </div>
-
-        <div class="products-grid">
-            <div class="product-card" data-product="bjj">
-                <div class="card-icon">🥋</div>
-                <h3>BJJ TIMER PRO</h3>
-                <p>Plataforma de gestión del tiempo de combate y retos P2P personalizada para academias de artes marciales.</p>
-                <button class="product-btn">Probar Simulador Web</button>
+        <section id="productos" class="pillars-section">
+            <div class="section-header">
+                <h2>PRODUCTOS DE INVERSIÓN CORPORATIVA</h2>
+                <p>Soluciones propietarias diseñadas para resolver demandas de alta especificidad de academias y empresas.</p>
             </div>
 
-            <div class="product-card" data-product="fintech">
-                <div class="card-icon">💰</div>
-                <h3>PAGA TUS DEUDAS</h3>
-                <p>Consola analítica inteligente optimizada bajo el método Snowball para la liquidación planificada de pasivos.</p>
-                <button class="product-btn">Analizar Arquitectura</button>
-            </div>
+            <div class="products-grid">
+                <div class="product-card" data-product="bjj">
+                    <div class="card-icon">🥋</div>
+                    <h3>BJJ TIMER PRO</h3>
+                    <p>Plataforma de gestión del tiempo de combate y retos P2P personalizada para academias de artes marciales.</p>
+                    <button class="product-btn demo-btn">Probar Simulador Web</button>
+                </div>
 
-            <div class="product-card" data-product="edtech">
-                <div class="card-icon">🛡️</div>
-                <h3>TUTOR AL MANDO</h3>
-                <p>Infraestructura multiplataforma de control parental activo y filtrado dinámico de paquetes de red.</p>
-                <button class="product-btn">Ver Especificaciones</button>
+                <div class="product-card" data-product="fintech">
+                    <div class="card-icon">💰</div>
+                    <h3>PAGA TUS DEUDAS</h3>
+                    <p>Consola analítica inteligente optimizada bajo el método Snowball para la liquidación planificada de pasivos corporativos.</p>
+                    <button class="product-btn">Analizar Arquitectura</button>
+                </div>
+
+                <div class="product-card" data-product="edtech">
+                    <div class="card-icon">🛡️</div>
+                    <h3>TUTOR AL MANDO</h3>
+                    <p>Infraestructura multiplataforma de control parental activo y filtrado dinámico de paquetes de red.</p>
+                    <button class="product-btn">Ver Especificaciones</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <div class="modal-overlay" id="product-modal">
         <div class="modal-container">
@@ -94,6 +97,14 @@
                 </div>
         </div>
     </div>
+
+    <footer id="contacto" class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 JLDynamics. Todos los derechos reservados. | Desarrollado en Ecuador</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
