@@ -2,8 +2,16 @@
 <html lang="es" data-theme="default">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>JLDynamics | Software & Physical Security</title>
+    <meta name="description" content="JLDynamics - Ingeniería en software y seguridad física. Desarrollo en Flutter, Firebase, sistemas de cronometraje profesional y control parental.">
+    <meta name="keywords" content="JLDynamics, desarrollo software, BJJ Timer Pro, seguridad, Flutter, Firebase">
+    <meta name="author" content="JLDynamics">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
@@ -15,10 +23,17 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo-area">
+                <img src="assets/logo.png" alt="JLDynamics" class="logo-img" width="42" height="42">
                 <div class="brand-accent">JLD</div>
-                <span class="brand-name">JLDynamics</span>
+                <span class="brand-name">JL<span class="brand-highlight">Dynamics</span></span>
             </div>
             
+            <div class="theme-switcher">
+                <button class="theme-btn" data-swatch="default" title="Matrix Default">🌑</button>
+                <button class="theme-btn" data-swatch="cyan" title="Cyber Cyan">💠</button>
+                <button class="theme-btn" data-swatch="purple" title="Neon Purple">🔮</button>
+            </div>
+
             <button class="burger-menu" id="burgerToggle" aria-label="Abrir menú">
                 <span></span>
                 <span></span>
@@ -29,11 +44,14 @@
                 <ul class="nav-list">
                     <li><a href="#inicio" class="nav-link">Inicio</a></li>
                     <li class="dropdown">
-                        <a href="#servicios" class="nav-link">Servicios ▾</a>
+                        <a href="#servicios" class="nav-link">Empresa ▾</a>
                         <ul class="submenu">
-                            <li><a href="#desarrollo-movil">Desarrollo Móvil</a></li>
-                            <li><a href="#automatizacion">Webs & Scripts</a></li>
-                            <li><a href="#seguridad-fisica">Seguridad & Cámaras</a></li>
+                            <li><a href="#mision" class="smooth-link">🎯 Misión</a></li>
+                            <li><a href="#vision" class="smooth-link">👁️ Visión</a></li>
+                            <li><a href="#valores" class="smooth-link">💎 Valores</a></li>
+                            <li><a href="#desarrollo-movil">📱 Desarrollo Móvil</a></li>
+                            <li><a href="#automatizacion">🌐 Webs & Scripts</a></li>
+                            <li><a href="#seguridad-fisica">🔒 Seguridad & Cámaras</a></li>
                         </ul>
                     </li>
                     <li><a href="#productos" class="nav-link">Productos</a></li>
@@ -44,18 +62,130 @@
     </header>
 
     <main>
+        <!-- Hero Section con ECG animado -->
         <section id="inicio" class="hero-section">
             <div class="hero-content">
-                <h1 class="main-title">INGENIERÍA E INNOVACIÓN EN SEGURIDAD</h1>
+                <div class="hero-tagline">INGENIERÍA E INNOVACIÓN EN SEGURIDAD</div>
+                <h1 class="main-title">Diseñamos el Futuro<br>Digital de tu Empresa</h1>
                 <p class="hero-subtitle">Sinergia avanzada entre desarrollo de software a medida y arquitecturas de protección física de alta confiabilidad.</p>
+                
+                <!-- Animación ECG -->
+                <div class="ecg-container">
+                    <svg class="ecg-svg" viewBox="0 0 800 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="ecg-path" d="M0 60H320L330 30L340 90L350 10L360 110L370 45L380 75L390 60H800" stroke-linecap="round"/>
+                        <defs>
+                            <linearGradient id="ecg-gradient" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="var(--primary)"/>
+                                <stop offset="0.5" stop-color="var(--secondary)"/>
+                                <stop offset="1" stop-color="var(--primary)"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                
                 <div class="hero-actions">
                     <a href="#productos" class="cta-primary">Explorar Ecosistema</a>
                     <a href="#servicios" class="cta-secondary">Nuestros Servicios</a>
                 </div>
             </div>
-            <div class="pulse-divider"></div>
         </section>
 
+        <!-- Misión y Visión -->
+        <section id="mision-vision" class="mission-vision">
+            <div class="mv-container">
+                <div class="mv-card" id="mision">
+                    <div class="mv-icon">🎯</div>
+                    <h3>Misión</h3>
+                    <p>Desarrollar soluciones tecnológicas de alta calidad que integren software innovador con sistemas de seguridad física, brindando a nuestros clientes herramientas confiables, escalables y personalizadas que impulsen su crecimiento y protección.</p>
+                </div>
+                <div class="mv-card" id="vision">
+                    <div class="mv-icon">👁️</div>
+                    <h3>Visión</h3>
+                    <p>Ser reconocidos como el ecosistema tecnológico líder en Ecuador, donde el desarrollo de software de vanguardia y la seguridad física convergen para crear entornos digitales y físicos inquebrantables.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 Pilares Corporativos -->
+        <section class="pillars-corporate">
+            <h2 class="section-title">Nuestra <span class="highlight">Infraestructura</span></h2>
+            <div class="pillars-grid">
+                <div class="pillar-card" data-pillar="rapido">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3>Rápido</h3>
+                    <p>Optimización nativa milimétrica. Latencia mínima en cada interacción.</p>
+                </div>
+                <div class="pillar-card" data-pillar="seguro">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Seguro</h3>
+                    <p>Criptografía de extremo a extremo. Datos protegidos en todo momento.</p>
+                </div>
+                <div class="pillar-card" data-pillar="escalable">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                        </svg>
+                    </div>
+                    <h3>Escalable</h3>
+                    <p>Sistemas modulares listos para crecer con tu negocio sin límites.</p>
+                </div>
+                <div class="pillar-card" data-pillar="innovador">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <h3>Innovador</h3>
+                    <p>Interfaces disruptivas de vanguardia. Siempre un paso adelante.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo de Personalización Extrema -->
+        <section class="customization-demo">
+            <h2 class="section-title">Personalización <span class="highlight">Extrema</span></h2>
+            <div class="demo-container">
+                <div class="demo-mockup">
+                    <div class="mockup-header">
+                        <img src="assets/logo.png" alt="Logo Academia" class="mockup-logo" id="demo-logo">
+                        <span class="mockup-academy-name" id="demo-academy-name">Tu Academia Aquí</span>
+                    </div>
+                    <div class="mockup-timer">
+                        <div class="timer-number" id="demo-timer">06:00</div>
+                        <div class="timer-controls">
+                            <button class="mockup-btn demo-play">▶</button>
+                            <button class="mockup-btn demo-pause">⏸</button>
+                            <button class="mockup-btn demo-reset">⟳</button>
+                        </div>
+                    </div>
+                    <div class="mockup-footer">
+                        <span class="mockup-brand">Powered by JLDynamics</span>
+                    </div>
+                </div>
+                <div class="demo-text">
+                    <h3>🎨 Tu Marca, Tu Estilo</h3>
+                    <p>✓ Logo de la academia en splash screen y timer</p>
+                    <p>✓ Colores institucionales personalizados</p>
+                    <p>✓ Nombre de academia en pantalla principal</p>
+                    <p>✓ Perfil de atleta: apodo, estilo, linaje</p>
+                    <button class="product-btn demo-cta" onclick="window.location.href='#contacto'">🎯 Solicitar Personalización</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Productos -->
         <section id="productos" class="pillars-section">
             <div class="section-header">
                 <h2>PRODUCTOS DE INVERSIÓN CORPORATIVA</h2>
@@ -67,42 +197,65 @@
                     <div class="card-icon">🥋</div>
                     <h3>BJJ TIMER PRO</h3>
                     <p>Plataforma de gestión del tiempo de combate y retos P2P personalizada para academias de artes marciales.</p>
-                    <button class="product-btn demo-btn">Probar Simulador Web</button>
+                    <button class="product-btn demo-btn">🎮 Probar Simulador Web</button>
                 </div>
 
                 <div class="product-card" data-product="fintech">
                     <div class="card-icon">💰</div>
                     <h3>PAGA TUS DEUDAS</h3>
                     <p>Consola analítica inteligente optimizada bajo el método Snowball para la liquidación planificada de pasivos corporativos.</p>
-                    <button class="product-btn">Analizar Arquitectura</button>
+                    <button class="product-btn">📊 Analizar Arquitectura</button>
                 </div>
 
                 <div class="product-card" data-product="edtech">
                     <div class="card-icon">🛡️</div>
                     <h3>TUTOR AL MANDO</h3>
                     <p>Infraestructura multiplataforma de control parental activo y filtrado dinámico de paquetes de red.</p>
-                    <button class="product-btn">Ver Especificaciones</button>
+                    <button class="product-btn">🔧 Ver Especificaciones</button>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Modal -->
     <div class="modal-overlay" id="product-modal">
         <div class="modal-container">
             <button class="modal-close" id="closeTimerModalBtn">&times;</button>
             <div class="modal-header">
                 <h2>Cargando Producto...</h2>
             </div>
-            <div class="modal-body">
-                </div>
+            <div class="modal-body"></div>
         </div>
     </div>
 
+    <!-- Footer completo -->
     <footer id="contacto" class="footer">
         <div class="footer-container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 JLDynamics. Todos los derechos reservados. | Desarrollado en Ecuador</p>
+            <div class="footer-logo-area">
+                <img src="assets/logo.png" alt="JLDynamics" width="50" class="footer-logo-img">
+                <h3>JL<span>Dynamics</span></h3>
+                <p>Ingeniería en Software y Seguridad Física</p>
             </div>
+            <div class="footer-links">
+                <h4>📱 Contacto Directo</h4>
+                <a href="https://wa.me/593958652500" target="_blank" class="whatsapp-btn">📱 WhatsApp: +593 95 865 2500</a>
+                <a href="mailto:luimike001@gmail.com" class="email-btn">✉️ luimike001@gmail.com</a>
+            </div>
+            <div class="footer-links">
+                <h4>🔗 Enlaces Rápidos</h4>
+                <a href="#mision">Misión y Visión</a>
+                <a href="#productos">Productos</a>
+                <a href="#servicios">Servicios</a>
+            </div>
+            <div class="footer-social">
+                <h4>🌐 Redes Sociales</h4>
+                <a href="#">📷 Instagram</a>
+                <a href="#">📘 Facebook</a>
+                <a href="#">💼 LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 JLDynamics. Todos los derechos reservados. | Desarrollado en Ecuador</p>
         </div>
     </footer>
 
