@@ -730,3 +730,172 @@ body {
     height: 8px;
     background: var(--primary);
     border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s;
+}
+
+#custom-cursor-blur {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 229, 255, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    filter: blur(10px);
+    transition: transform 0.08s linear;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-glass);
+    padding: 3rem 2rem 1rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo-area h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.footer-logo-area h3 span {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-logo-area p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.footer-links h4, .footer-social h4 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+.footer-links a, .footer-social a {
+    display: block;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover, .footer-social a:hover {
+    color: var(--primary);
+}
+
+.whatsapp-btn:hover { color: #25D366 !important; }
+.email-btn:hover { color: var(--primary) !important; }
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-glass);
+    font-size: 0.7rem;
+    color: #6A6A73;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 992px) {
+    #custom-cursor, #custom-cursor-blur { display: none; }
+    
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1100;
+    }
+    
+    .burger-menu span {
+        width: 26px;
+        height: 2px;
+        background: var(--text-main);
+        transition: all 0.3s;
+    }
+    
+    .burger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .burger-menu.active span:nth-child(2) { opacity: 0; }
+    .burger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--bg-card);
+        border-left: 1px solid var(--border-glass);
+        padding: 6rem 2rem;
+        transition: right 0.3s ease;
+    }
+    
+    .nav-menu.active { right: 0; }
+    
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    
+    .submenu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        background: transparent;
+        border: none;
+        padding: 0.5rem 0 0 1rem;
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .theme-switcher {
+        margin-right: 0.5rem;
+    }
+    
+    .theme-btn {
+        font-size: 1rem;
+        padding: 2px 6px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section { padding: 7rem 1.5rem 4rem; }
+    .main-title { font-size: 1.8rem; }
+    .hero-subtitle { font-size: 0.9rem; }
+    
+    .hero-actions { flex-direction: column; align-items: center; }
+    .cta-primary, .cta-secondary { padding: 0.7rem 1.5rem; font-size: 0.8rem; }
+    
+    .mv-container { flex-direction: column; }
+    .mv-card { padding: 1.5rem; }
+    
+    .pillars-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .products-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .product-card { padding: 1.8rem; }
+    
+    .demo-mockup { width: 100%; max-width: 320px; }
+    .timer-number-modal { font-size: 2.5rem; }
+    
+    .footer-container { flex-direction: column; text-align: center; }
+    .footer-links a { display: inline-block; margin: 0.5rem 1rem; }
+}
