@@ -470,3 +470,373 @@
     <h2 class="section-title">Nuestra <span>Infraestructura</span></h2>
     <div class="pillars-grid">
         <div class="pillar-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            <h3>RÁPIDO</h3>
+            <p>Optimización nativa milimétrica. Latencia mínima en cada interacción.</p>
+        </div>
+        <div class="pillar-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <h3>SEGURO</h3>
+            <p>Criptografía de extremo a extremo. Datos protegidos en todo momento.</p>
+        </div>
+        <div class="pillar-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+            <h3>ESCALABLE</h3>
+            <p>Sistemas modulares listos para crecer con tu negocio sin límites.</p>
+        </div>
+        <div class="pillar-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+            </svg>
+            <h3>INNOVADOR</h3>
+            <p>Interfaces disruptivas de vanguardia. Siempre un paso adelante.</p>
+        </div>
+    </div>
+</section>
+
+<!-- DEMO DE PERSONALIZACIÓN (NUEVO) -->
+<section class="customization-demo">
+    <h2 class="section-title">Personalización <span>Extrema</span></h2>
+    <div class="demo-container">
+        <div class="demo-mockup">
+            <div class="mockup-header">
+                <img src="assets/logo.png" class="mockup-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%2300f0ff%22/%3E%3Ctext x=%2250%22 y=%2265%22 text-anchor=%22middle%22 fill=%22%23000%22 font-size=%2240%22%3EJD%3C/text%3E%3C/svg%3E'">
+                <span class="mockup-academy-name" id="demoAcademyName">Tu Academia Aquí</span>
+            </div>
+            <div class="mockup-timer">
+                <div class="demo-timer-number" id="demoTimer">06:00</div>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+                    <button class="demo-play" style="background:rgba(255,255,255,0.1); border:none; padding:6px 12px; border-radius:20px; color:white;">▶</button>
+                    <button class="demo-pause" style="background:rgba(255,255,255,0.1); border:none; padding:6px 12px; border-radius:20px; color:white;">⏸</button>
+                    <button class="demo-reset" style="background:rgba(255,255,255,0.1); border:none; padding:6px 12px; border-radius:20px; color:white;">⟳</button>
+                </div>
+            </div>
+            <div class="mockup-footer" style="text-align:center; margin-top:1rem; font-size:0.7rem;">Powered by JLDynamics</div>
+        </div>
+        <div class="demo-text">
+            <h3>🎨 Tu Marca, Tu Estilo</h3>
+            <p>✓ Logo de la academia en splash screen y timer</p>
+            <p>✓ Colores institucionales personalizados</p>
+            <p>✓ Nombre de academia en pantalla principal</p>
+            <p>✓ Perfil de atleta: apodo, estilo, linaje</p>
+            <button class="product-btn" onclick="window.location.href='#contacto'" style="margin-top:1rem;">🎯 Solicitar Personalización</button>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+    <h2 class="section-title">Nuestro <span>Ecosistema</span></h2>
+    <div class="products-grid">
+        <div class="product-card" data-product="bjj">
+            <h3>🥋 BJJ Timer Pro</h3>
+            <p>Plataforma de gestión del tiempo de combate y retos P2P. Timer profesional, sistema anti-fraude, ranking ELO y personalización completa para academias.</p>
+            <button class="product-btn" id="openBJJModal">🎮 Probar Timer Completo →</button>
+        </div>
+        <div class="product-card" data-product="fintech">
+            <h3>💰 Paga tus Deudas</h3>
+            <p>Consola analítica inteligente bajo el método Snowball para liquidación planificada de pasivos. Optimiza tus pagos y proyecta libertad financiera.</p>
+            <button class="product-btn">📊 Analizar Arquitectura</button>
+        </div>
+        <div class="product-card" data-product="edtech">
+            <h3>🛡️ Tutor al Mando</h3>
+            <p>Control parental avanzado multiplataforma. Gestión de tiempo de pantalla, filtrado de contenido y monitoreo remoto para Windows, Android e iOS.</p>
+            <button class="product-btn">🔧 Ver Especificaciones</button>
+        </div>
+    </div>
+</section>
+
+<!-- MODAL BJJ TIMER -->
+<div id="bjj-modal" class="modal-overlay">
+    <div class="modal-container">
+        <button class="modal-close" id="closeModalBtn">&times;</button>
+        <div class="modal-header">
+            <h2>BJJ Timer Pro <span style="color:var(--primary)">Simulador Web</span></h2>
+        </div>
+        <div class="modal-body">
+            <div class="timer-status" id="timerStatus" style="color:#FFB300;">⚔️ PREPARACIÓN</div>
+            <div class="timer-display-modal" id="timerDisplay">00:10</div>
+            <div class="timer-controls-modal">
+                <button class="timer-btn-modal" id="timerPlayBtn">▶ Iniciar</button>
+                <button class="timer-btn-modal" id="timerPauseBtn">⏸ Pausa</button>
+                <button class="timer-btn-modal" id="timerResetBtn">⟳ Reiniciar</button>
+            </div>
+            <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; padding: 1rem;">
+                <p style="font-size: 0.85rem;">💡 <strong>Modo Gladiadores:</strong> Sistema de retos P2P con validación mutua. Personalización completa: logo academia, colores institucionales y ranking ELO interno.</p>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem;">📱 Versión completa disponible en Flutter con integración QR y Firebase.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER COMPLETO CON WHATSAPP -->
+<footer id="contacto">
+    <div class="footer-container">
+        <div class="footer-logo-area">
+            <img src="assets/logo.png" width="40" style="border-radius:10px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%2300f0ff%22/%3E%3Ctext x=%2250%22 y=%2265%22 text-anchor=%22middle%22 fill=%22%23000%22 font-size=%2240%22%3EJD%3C/text%3E%3C/svg%3E'">
+            <h3>JL<span>Dynamics</span></h3>
+            <p>Ingeniería en Software y Seguridad Física</p>
+        </div>
+        <div class="footer-links">
+            <h4>📱 Contacto Directo</h4>
+            <a href="https://wa.me/593958652500" target="_blank" class="whatsapp-btn">📱 WhatsApp: +593 95 865 2500</a>
+            <a href="mailto:luimike001@gmail.com" class="email-btn">✉️ luimike001@gmail.com</a>
+        </div>
+        <div class="footer-links">
+            <h4>🔗 Enlaces Rápidos</h4>
+            <a href="#mision">Misión y Visión</a>
+            <a href="#productos">Productos</a>
+            <a href="#pilares">Pilares</a>
+        </div>
+        <div class="footer-social">
+            <h4>🌐 Redes Sociales</h4>
+            <a href="#">📷 Instagram</a>
+            <a href="#">📘 Facebook</a>
+            <a href="#">💼 LinkedIn</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 JLDynamics - Ambato, Ecuador. Todos los derechos reservados. | Desarrollo de Software de Alto Rendimiento</p>
+    </div>
+</footer>
+
+<script>
+    // ========== THEME SWITCHER ==========
+    const themeBtns = document.querySelectorAll('.theme-btn');
+    const savedTheme = localStorage.getItem('jldynamics-theme');
+    if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    themeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const theme = btn.getAttribute('data-swatch');
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('jldynamics-theme', theme);
+        });
+    });
+    
+    // ========== CURSOR MAGNÉTICO ==========
+    const cursor = document.getElementById('custom-cursor');
+    const blurCursor = document.getElementById('custom-cursor-blur');
+    
+    if (window.innerWidth > 992 && cursor && blurCursor) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            blurCursor.style.transform = `translate(${e.clientX - 25}px, ${e.clientY - 25}px)`;
+        });
+        
+        const interactiveElements = document.querySelectorAll('.product-btn, .cta-primary, .nav-link, .theme-btn, .pillar-card');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '24px';
+                cursor.style.height = '24px';
+                cursor.style.backgroundColor = 'transparent';
+                cursor.style.border = '2px solid var(--primary)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '10px';
+                cursor.style.height = '10px';
+                cursor.style.backgroundColor = 'var(--primary)';
+                cursor.style.border = 'none';
+            });
+        });
+    }
+    
+    // ========== DEMO MOCKUP INTERACTIVO ==========
+    let demoSecs = 360;
+    let demoInterval = null;
+    let demoRunning = false;
+    const demoTimerEl = document.getElementById('demoTimer');
+    
+    function updateDemoTimer() {
+        if (demoTimerEl) {
+            const mins = Math.floor(demoSecs / 60);
+            const secs = demoSecs % 60;
+            demoTimerEl.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+    }
+    
+    function startDemoTimer() {
+        if (demoInterval) clearInterval(demoInterval);
+        demoRunning = true;
+        demoInterval = setInterval(() => {
+            if (demoSecs > 0) {
+                demoSecs--;
+                updateDemoTimer();
+            } else {
+                clearInterval(demoInterval);
+                demoRunning = false;
+            }
+        }, 1000);
+    }
+    
+    document.querySelector('.demo-play')?.addEventListener('click', () => {
+        if (!demoRunning) startDemoTimer();
+    });
+    document.querySelector('.demo-pause')?.addEventListener('click', () => {
+        if (demoInterval) clearInterval(demoInterval);
+        demoRunning = false;
+    });
+    document.querySelector('.demo-reset')?.addEventListener('click', () => {
+        if (demoInterval) clearInterval(demoInterval);
+        demoRunning = false;
+        demoSecs = 360;
+        updateDemoTimer();
+    });
+    updateDemoTimer();
+    // ========== MODAL BJJ TIMER ==========
+    const modal = document.getElementById('bjj-modal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const openModalBtn = document.getElementById('openBJJModal');
+    
+    let modalTimerInterval = null;
+    let modalSeconds = 10;
+    let modalState = 'PREPARACIÓN';
+    let modalRunning = false;
+    
+    const modalDisplay = document.getElementById('timerDisplay');
+    const modalStatus = document.getElementById('timerStatus');
+    
+    function formatModalTime(secs) {
+        const mins = Math.floor(secs / 60);
+        const s = secs % 60;
+        return `${mins.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    }
+    
+    function updateModalUI() {
+        if (modalDisplay) modalDisplay.textContent = formatModalTime(modalSeconds);
+        if (modalStatus) {
+            modalStatus.textContent = modalState === 'PREPARACIÓN' ? '⚔️ PREPARACIÓN' : '⚡ LUCHA';
+            modalStatus.style.color = modalState === 'PREPARACIÓN' ? '#FFB300' : '#00f0ff';
+        }
+    }
+    
+    function playBuzzer() {
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.8);
+        } catch(e) { console.log('Audio context blocked'); }
+    }
+    
+    function startModalTimer() {
+        if (modalRunning) return;
+        modalRunning = true;
+        modalTimerInterval = setInterval(() => {
+            if (modalSeconds > 0) {
+                modalSeconds--;
+                updateModalUI();
+            } else {
+                if (modalState === 'PREPARACIÓN') {
+                    playBuzzer();
+                    modalState = 'LUCHA';
+                    modalSeconds = 300;
+                    updateModalUI();
+                } else {
+                    clearInterval(modalTimerInterval);
+                    modalRunning = false;
+                    playBuzzer();
+                }
+            }
+        }, 1000);
+    }
+    
+    function pauseModalTimer() {
+        if (modalTimerInterval) clearInterval(modalTimerInterval);
+        modalRunning = false;
+    }
+    
+    function resetModalTimer() {
+        if (modalTimerInterval) clearInterval(modalTimerInterval);
+        modalRunning = false;
+        modalState = 'PREPARACIÓN';
+        modalSeconds = 10;
+        updateModalUI();
+    }
+    
+    if (openModalBtn) {
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            resetModalTimer();
+        });
+    }
+    
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            pauseModalTimer();
+        });
+    }
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            pauseModalTimer();
+        }
+    });
+    
+    document.getElementById('timerPlayBtn')?.addEventListener('click', startModalTimer);
+    document.getElementById('timerPauseBtn')?.addEventListener('click', pauseModalTimer);
+    document.getElementById('timerResetBtn')?.addEventListener('click', resetModalTimer);
+    
+    resetModalTimer();
+    
+    // ========== SMOOTH SCROLL ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== '#') {
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+    
+    // ========== ANIMACIONES SCROLL ==========
+    const animatedElements = document.querySelectorAll('.pillar-card, .product-card, .mv-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s, transform 0.6s';
+        observer.observe(el);
+    });
+    
+    console.log('%c🚀 JLDynamics - Plataforma Corporativa Premium Cargada ✅', 'color:#00f0ff; font-size:14px;');
+</script>
+</body>
+</html>
+```
+
+---
