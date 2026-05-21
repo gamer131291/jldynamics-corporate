@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>JLDynamics | Desarrollo de Software Premium</title>
+    <meta name="description" content="JLDynamics - Soluciones de software de alto rendimiento, ingeniería en Flutter/Firebase y sistemas de seguridad integrados.">
+    <meta name="keywords" content="JLDynamics, desarrollo software, BJJ Timer Pro, fintech, control parental">
+    <meta name="author" content="JLDynamics">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body data-interactive>
+
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-blur"></div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="JLDynamics Logo" class="logo-img" width="42" height="42">
+            <div class="logo-text">JL<span>Dynamics</span></div>
+        </div>
+        <div class="theme-swapper">
+            <button class="theme-btn" data-swatch="default" title="Matrix Default"></button>
+            <button class="theme-btn" data-swatch="cyan" title="Cyber Cyan"></button>
+            <button class="theme-btn" data-swatch="purple" title="Neon Purple"></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-tagline">Desarrollo de Software de Alta Gama</div>
+            <h1 class="hero-title">Diseñamos el Futuro<br>Digital de tu Empresa</h1>
+            <div class="ecg-container">
+                <svg class="ecg-svg" viewBox="0 0 800 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="ecg-path" d="M0 60H320L330 30L340 90L350 10L360 110L370 45L380 75L390 60H800" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="ecg-gradient" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="var(--primary)"/>
+                            <stop offset="0.5" stop-color="var(--secondary)"/>
+                            <stop offset="1" stop-color="var(--primary)"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </section>
+
+        <section class="pillars-section">
+            <h2 class="section-title">Nuestra Infraestructura</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card" data-pillar="rapido">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3>Rápido</h3>
+                    <p>Optimización nativa milimétrica.</p>
+                </div>
+                <div class="pillar-card" data-pillar="seguro">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Seguro</h3>
+                    <p>Criptografía y resiliencia lógica.</p>
+                </div>
+                <div class="pillar-card" data-pillar="escalable">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                        </svg>
+                    </div>
+                    <h3>Escalable</h3>
+                    <p>Sistemas modulares listos para crecer.</p>
+                </div>
+                <div class="pillar-card" data-pillar="innovador">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <h3>Innovador</h3>
+                    <p>Interfaces disruptivas de vanguardia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="ecosystem-section">
+            <h2 class="section-title">Ecosistema de Soluciones</h2>
+            <div class="carousel-container">
+                <div class="product-card" data-product="bjj">
+                    <span class="product-badge">Performance / Deporte</span>
+                    <h4>BJJ Timer Pro</h4>
+                    <p>Sistemas de control y cronometraje táctico avanzado para deportes de combate de alto rendimiento.</p>
+                    <button class="product-btn">Desplegar Interfaz</button>
+                </div>
+                <div class="product-card" data-product="fintech">
+                    <span class="product-badge">Fintech Analytics</span>
+                    <h4>Paga tus Deudas</h4>
+                    <p>Algoritmia y automatización financiera basada en el método Snowball para liquidación inteligente de pasivos.</p>
+                    <button class="product-btn">Iniciar Consola</button>
+                </div>
+                <div class="product-card" data-product="edtech">
+                    <span class="product-badge">EdTech & Security</span>
+                    <h4>Tutor al Mando</h4>
+                    <p>Software de control parental integral y protección activa para entornos operativos Windows/Mobile.</p>
+                    <button class="product-btn">Configurar Entorno</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">BJJ Timer Pro</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div class="modal-loading">Cargando interfaz...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
