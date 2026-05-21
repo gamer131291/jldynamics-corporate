@@ -1,24 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // ========== MENÚ HAMBURGUESA RESPONSIVO ==========
+    // ========== THEME SWITCHER ==========
+    const themeBtns = document.querySelectorAll('.theme-btn');
+    const savedTheme = localStorage.getItem('jldynamics-theme');
+    
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+    
+    themeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const theme = btn.getAttribute('data-swatch');
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('jldynamics-theme', theme);
+        });
+    });
+    
+    // ========== MENÚ HAMBURGUESA ==========
     const burgerToggle = document.getElementById('burgerToggle');
     const navMenu = document.getElementById('navMenu');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-link, .submenu a');
 
     if (burgerToggle && navMenu) {
         burgerToggle.addEventListener('click', () => {
             burgerToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
-            
-            // Bloquear scroll del cuerpo cuando el menú esté abierto
-            if (navMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Cerrar menú al hacer clic en cualquier enlace
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 burgerToggle.classList.remove('active');
@@ -28,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // ========== CURSOR MAGNÉTICO (Desktop) ==========
+    // ========== CURSOR MAGNÉTICO ==========
     if (window.innerWidth > 992) {
         const cursor = document.getElementById('custom-cursor');
         const blurCursor = document.getElementById('custom-cursor-blur');
@@ -40,13 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 blurCursor.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
             });
             
-            const interactiveElements = document.querySelectorAll('.product-btn, .cta-primary, .nav-link, .burger-menu');
+            const interactiveElements = document.querySelectorAll('.product-btn, .cta-primary, .cta-secondary, .nav-link, .burger-menu, .theme-btn, .pillar-card, .mockup-btn');
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => {
-                    cursor.style.width = '20px';
-                    cursor.style.height = '20px';
+                    cursor.style.width = '24px';
+                    cursor.style.height = '24px';
                     cursor.style.backgroundColor = 'transparent';
-                    cursor.style.border = '1px solid var(--primary)';
+                    cursor.style.border = '2px solid var(--primary)';
                 });
                 el.addEventListener('mouseleave', () => {
                     cursor.style.width = '8px';
@@ -58,16 +67,90 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // ========== CONTROLADORES DEL SIMULADOR DEL MODAL ==========
+    // ========== TILT 3D EN PILARES ==========
+    const pillarCards = document.querySelectorAll('.pillar-card');
+    pillarCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const xc = rect.width / 2;
+            const yc = rect.height / 2;
+            const angleX = (yc - y) / 20;
+            const angleY = (x - xc) / 20;
+            card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        });
+    });
+    
+    // ========== DEMO MOCKUP INTERACTIVO ==========
+    let demoSeconds = 360;
+    let demoInterval = null;
+    let demoRunning = false;
+    
+    const demoTimer = document.getElementById('demo-timer');
+    const demoPlay = document.querySelector('.demo-play');
+    const demoPause = document.querySelector('.demo-pause');
+    const demoReset = document.querySelector('.demo-reset');
+    
+    function updateDemoDisplay() {
+        if (demoTimer) {
+            const mins = Math.floor(demoSeconds / 60);
+            const secs = demoSeconds % 60;
+            demoTimer.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+    }
+    
+    function startDemoTimer() {
+        if (demoInterval) clearInterval(demoInterval);
+        demoRunning = true;
+        demoInterval = setInterval(() => {
+            if (demoSeconds > 0) {
+                demoSeconds--;
+                updateDemoDisplay();
+            } else {
+                clearInterval(demoInterval);
+                demoRunning = false;
+                if (demoReset) demoReset.click();
+            }
+        }, 1000);
+    }
+    
+    if (demoPlay) {
+        demoPlay.addEventListener('click', () => {
+            if (!demoRunning) startDemoTimer();
+        });
+    }
+    
+    if (demoPause) {
+        demoPause.addEventListener('click', () => {
+            if (demoInterval) clearInterval(demoInterval);
+            demoRunning = false;
+        });
+    }
+    
+    if (demoReset) {
+        demoReset.addEventListener('click', () => {
+            if (demoInterval) clearInterval(demoInterval);
+            demoRunning = false;
+            demoSeconds = 360;
+            updateDemoDisplay();
+        });
+    }
+    
+    updateDemoDisplay();
+    
+    // ========== MODAL TIMER ==========
     const modal = document.getElementById('product-modal');
     const modalCloseBtn = document.getElementById('closeTimerModalBtn');
     
     let timerInterval = null;
-    let timerSeconds = 10; 
-    let timerState = 'PREPARACIÓN'; // Estados: PREPARACIÓN -> LUCHA -> PAUSA
+    let timerSeconds = 10;
+    let timerState = 'PREPARACIÓN';
     let isTimerRunning = false;
-
-    // Sonido acústico nativo (campana tatami)
+    
     function playBuzzer(frequency, duration) {
         try {
             const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -80,67 +163,79 @@ document.addEventListener('DOMContentLoaded', () => {
             gainNode.connect(audioCtx.destination);
             oscillator.start();
             oscillator.stop(audioCtx.currentTime + duration);
-        } catch (e) { console.log("Audio contexts blocked."); }
+        } catch (e) { console.log("Audio context blocked"); }
     }
-
+    
     function formatTime(totalSeconds) {
         const mins = Math.floor(totalSeconds / 60);
         const secs = totalSeconds % 60;
         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     }
-
-    function updateUI() {
+    
+    function updateModalUI() {
         const display = document.getElementById('modalTimerDisplay');
         const label = document.getElementById('timerStatusLabel');
         if (display && label) {
             display.textContent = formatTime(timerSeconds);
             label.textContent = timerState;
-            // Control cromático por estados
-            if (timerState === 'PREPARACIÓN') { label.style.color = '#FFB300'; display.style.color = '#FFF'; }
-            else if (timerState === 'LUCHA') { label.style.color = '#00E5FF'; display.style.color = '#00E5FF'; }
+            label.style.color = timerState === 'PREPARACIÓN' ? '#FFB300' : '#00E5FF';
         }
     }
-
-    function startTimer() {
+    
+    function startModalTimer() {
         if (isTimerRunning) return;
         isTimerRunning = true;
         timerInterval = setInterval(() => {
             if (timerSeconds > 0) {
                 timerSeconds--;
-                updateUI();
+                updateModalUI();
             } else {
                 if (timerState === 'PREPARACIÓN') {
                     playBuzzer(600, 0.8);
                     timerState = 'LUCHA';
-                    timerSeconds = 300; // Round 5min
-                    updateUI();
+                    timerSeconds = 300;
+                    updateModalUI();
                 } else {
                     clearInterval(timerInterval);
                     isTimerRunning = false;
+                    playBuzzer(800, 1);
                 }
             }
         }, 1000);
     }
-
-    function pauseTimer() { clearInterval(timerInterval); isTimerRunning = false; }
-    function resetTimer() { clearInterval(timerInterval); isTimerRunning = false; timerState = 'PREPARACIÓN'; timerSeconds = 10; updateUI(); }
-
-    function attachListeners() {
-        document.getElementById('timerPlayBtn')?.addEventListener('click', startTimer);
-        document.getElementById('timerPauseBtn')?.addEventListener('click', pauseTimer);
-        document.getElementById('timerResetBtn')?.addEventListener('click', resetTimer);
-        resetTimer(); // Set inicial
+    
+    function pauseModalTimer() {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
     }
-
+    
+    function resetModalTimer() {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        timerState = 'PREPARACIÓN';
+        timerSeconds = 10;
+        updateModalUI();
+    }
+    
+    function attachModalListeners() {
+        document.getElementById('timerPlayBtn')?.addEventListener('click', startModalTimer);
+        document.getElementById('timerPauseBtn')?.addEventListener('click', pauseModalTimer);
+        document.getElementById('timerResetBtn')?.addEventListener('click', resetModalTimer);
+        resetModalTimer();
+    }
+    
     function loadContent(productId) {
         const modalBody = modal.querySelector('.modal-body');
         const modalTitle = modal.querySelector('.modal-header h2');
-
+        
         if (productId === 'bjj') {
             modalTitle.innerHTML = 'Simulador Web: <span>BJJ Timer Pro</span>';
             modalBody.innerHTML = `
                 <div class="demo-mockup-modal">
-                    <div class="mockup-header-modal"><span>JLDYNAMICS</span><span>TATAMI DIGITAL</span></div>
+                    <div class="mockup-header-modal">
+                        <span>JLDYNAMICS</span>
+                        <span>TATAMI DIGITAL</span>
+                    </div>
                     <div class="mockup-timer-modal">
                         <div id="timerStatusLabel" class="timer-status-text">PREPARACIÓN</div>
                         <div id="modalTimerDisplay" class="timer-number-modal">00:10</div>
@@ -152,24 +247,111 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="modal-info-text">
-                    <p>💡 <strong>Esencia:</strong> Esta es una versión web simplificada del núcleo. En producción con Flutter, el administrador cambia logos Hex y activa el emparejamiento <strong>Modo Gladiadores</strong> vía QR.</p>
+                    <p>💡 <strong>BJJ Timer Pro - Modo Gladiadores</strong><br>
+                    Timer profesional con sistema de retos P2P. Personalización completa: logo de academia, colores institucionales y ranking ELO interno.</p>
+                    <p style="margin-top: 1rem;">📱 Versión completa disponible en Flutter con integración QR y Firebase.</p>
                 </div>
             `;
-            attachListeners();
+            attachModalListeners();
+        } else if (productId === 'fintech') {
+            modalTitle.innerHTML = 'Paga tus Deudas';
+            modalBody.innerHTML = `
+                <div class="modal-info-text">
+                    <p>💰 <strong>Método Bola de Nieve</strong><br>
+                    Algoritmo inteligente de liquidación de pasivos. Optimiza tus pagos y proyecta tu libertad financiera.</p>
+                    <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; padding: 1rem;">
+                        <p>📊 Análisis de flujo de caja</p>
+                        <p>⚡ Optimización automática de pagos</p>
+                        <p>🔒 Datos encriptados</p>
+                    </div>
+                    <p style="margin-top: 1rem;">📱 Consulta disponibilidad para tu negocio.</p>
+                </div>
+            `;
         } else {
-            modalTitle.textContent = productId === 'fintech' ? 'Paga tus Deudas' : 'Tutor al Mando';
-            modalBody.innerHTML = `<p style="color:var(--text-muted); font-size:0.9rem; text-align:center;">Infraestructura lógica integrada en base de datos segura y Flutter. Dirección de consulta activa.</p>`;
+            modalTitle.innerHTML = 'Tutor al Mando';
+            modalBody.innerHTML = `
+                <div class="modal-info-text">
+                    <p>🛡️ <strong>Control Parental Integral</strong><br>
+                    Protección activa para entornos digitales. Gestiona tiempo de pantalla y filtra contenido inapropiado.</p>
+                    <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; padding: 1rem;">
+                        <p>⏱️ Gestión de tiempo de pantalla</p>
+                        <p>🔞 Filtrado de contenido</p>
+                        <p>📱 Monitoreo remoto</p>
+                    </div>
+                    <p style="margin-top: 1rem;">🪟 Disponible: Windows · Android · iOS</p>
+                </div>
+            `;
         }
     }
-
+    
     document.querySelectorAll('.product-card').forEach(card => {
-        card.querySelector('.product-btn')?.addEventListener('click', () => {
-            loadContent(card.getAttribute('data-product'));
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        const btn = card.querySelector('.product-btn');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                const productId = card.getAttribute('data-product') || 'bjj';
+                loadContent(productId);
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+    });
+    
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            pauseModalTimer();
+        });
+    }
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            pauseModalTimer();
+        }
+    });
+    
+    // ========== ANIMACIONES SCROLL ==========
+    const animatedElements = document.querySelectorAll('.pillar-card, .product-card, .mv-card');
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+    
+    if (window.innerWidth <= 768) {
+        animatedElements.forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        });
+    }
+    
+    // ========== SMOOTH SCROLL ==========
+    document.querySelectorAll('.smooth-link, a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== '#') {
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
         });
     });
-
-    modalCloseBtn?.addEventListener('click', () => { modal.classList.remove('active'); document.body.style.overflow = ''; pauseTimer(); });
-    modal.addEventListener('click', (e) => { if (e.target === modal) { modal.classList.remove('active'); document.body.style.overflow = ''; pauseTimer(); } });
+    
+    console.log('🚀 JLDynamics - Plataforma Corporativa Cargada ✅');
 });
